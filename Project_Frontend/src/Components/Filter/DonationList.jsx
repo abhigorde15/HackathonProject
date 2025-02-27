@@ -5,7 +5,7 @@ const hardcodedDonations = [
   { id: 1, category: "Food", location: "Delhi", urgency: "High", image: "/Food_Categorization2.webp" },
   { id: 2, category: "Medical", location: "Mumbai", urgency: "Medium", image: "/medical.avif" },
   { id: 3, category: "Clothes", location: "Delhi", urgency: "Low", image: "/clothes.jpg" },
-  { id: 4, category: "Hygiene", location: "Bangalore", urgency: "High", image: "/hygiene.avif" },
+  { id: 4, category: "Hygiene", location: "Bangalore", urgency: "High", image: "/hygeine.avif" },
   { id: 5, category: "Food", location: "Mumbai", urgency: "Low",  image: "/Food_Categorization2.webp" },
 ];
 
@@ -30,7 +30,7 @@ const DonationList = () => {
     };
 
     return (
-      <div className="p-6 bg-gray-800">
+      <div className="p-6 ">
       <FilterComponent onFilter={applyFilters} />
   
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">

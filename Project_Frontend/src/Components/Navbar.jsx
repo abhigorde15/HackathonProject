@@ -1,9 +1,9 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 let Navbar  = ()=>{
   const [open, setOpen] = useState(false);
-
+   const navigate = useNavigate();
     // Profiles to select from
     const profiles = ["Doner", "Institutes", "Shopkeeper"];
 
@@ -28,14 +28,28 @@ let Navbar  = ()=>{
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
   </a>
   <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+      <button type="button" className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Login</button>
       <Button
-      onClick={handleOpen}
-      type="button" className="mx-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-       
-        Registration
-       
-        </Button>
+  onClick={handleOpen}
+  type="button"
+  sx={{
+    backgroundColor: "#1D4ED8", // bg-blue-700
+    "&:hover": { backgroundColor: "#1E40AF" }, // hover:bg-blue-800
+    "&:focus": { outline: "none", boxShadow: "0 0 0 4px rgba(59,130,246,0.5)" }, // focus:ring-4 focus:ring-blue-300
+    borderRadius: "0.5rem", // rounded-lg
+    fontSize: "0.875rem", // text-sm
+    fontWeight: 500, // font-medium
+    padding: "0.5rem 1rem", // px-4 py-2
+    textAlign: "center", // text-center
+    color: "white", // text-white
+    transition: "background-color 0.2s ease-in-out",
+    mx: 2, 
+  
+  }}
+  className="dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mx-2"
+>
+  Registration
+</Button>
 
 
 
@@ -47,16 +61,16 @@ let Navbar  = ()=>{
                 maxWidth="md" // Increased width
                 fullWidth // Makes it responsive
             >
-                <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white text-center py-6 bg-gray-300 dark:bg-gray-800">
+                <DialogTitle className="text-2xl font-bold text-white dark:text-white text-center py-6 bg-gray-300 dark:bg-gray-800">
                     Select Your Profile
                 </DialogTitle>
-                <DialogContent className="bg-white dark:bg-gray-900 p-8">
+                <DialogContent className="bg-white dark:bg-gray-200 text-5xl p-8">
                     <List className="space-y-4">
                         {profiles.map((profile, index) => (
                             <ListItem key={index} disablePadding>
                                 <ListItemButton
                                     onClick={() => {
-                                        alert(`Selected: ${profile}`);
+                                      navigate("/register");
                                         handleClose();
                                     }}
                                     className="text-gray-800 dark:text-white font-semibold text-lg hover:bg-blue-500 hover:text-white rounded-lg transition-all px-6 py-3"

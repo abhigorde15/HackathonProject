@@ -6,6 +6,8 @@ import Register from './Components/Register';
 import About from './Pages/About';
 import Home from './Pages/Home';
 import Footer from './Components/Footer';
+import DonorProfile from './Components/Donor/DonorProfile';
+
 
 function App() {
   return (
@@ -16,9 +18,11 @@ function App() {
          <Route path="/" element={<Home />} /> 
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+       <Route path="/dashboard/donor" element={<DonorProfile/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
+
   );
 }
 
