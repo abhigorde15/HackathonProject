@@ -12,7 +12,7 @@ const FilterComponent = ({ onFilter }) => {
     };
 
     return (
-        <div className="bg-black shadow-md rounded-lg p-4 flex flex-wrap gap-4 justify-center md:justify-between">
+        <div className="bg-gray-900 mb-5 shadow-md rounded-lg p-4 flex flex-wrap gap-4 justify-center md:justify-between">
             {/* Category Filter */}
             <select
                 name="category"

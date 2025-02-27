@@ -4,12 +4,13 @@ const Sidebar = () => {
   return (
     <aside className="w-1/4 bg-gray-100 p-4 rounded-lg">
       <div className="text-center">
-        <img
-          src="https://via.placeholder.com/80"
-          className="w-20 h-20 rounded-full mx-auto"
-          alt="Profile"
-        />
-        <h2 className="text-xl font-bold mt-2">John Doe</h2>
+      <img
+  src="/profile.png"  // Replace with your actual image filename
+  className="w-20 h-20 rounded-full mx-auto"
+  alt="Profile"
+/>
+
+        <h2 className="text-xl font-bold mt-2">Abhishek Gorde</h2>
         <p className="text-gray-600">Total Donations: 15</p>
         <button className="text-blue-500 underline mt-2">Edit Profile</button>
       </div>

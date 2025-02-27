@@ -33,7 +33,7 @@ const DonationList = () => {
       <div className="p-6 ">
       <FilterComponent onFilter={applyFilters} />
   
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4  bg-gray-200">
           {filteredDonations.length > 0 ? (
               filteredDonations.map((donation) => (
                   <div
@@ -84,7 +84,7 @@ const DonationList = () => {
                   </div>
               ))
           ) : (
-              <p className="text-center col-span-3 text-gray-500">No donations found.</p>
+              <p className="text-center col-span-3  text-gray-500">No donations found.</p>
           )}
       </div>
   </div>

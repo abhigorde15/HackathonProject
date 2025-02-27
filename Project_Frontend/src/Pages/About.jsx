@@ -1,11 +1,11 @@
 const About = () => {
   return (
-    <div className="bg-gray-800 min-h-screen py-12">
+    <div className="bg-gray-200 text-black  min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mt-10 mb-12">
-          <h1 className="text-4xl font-bold text-white">About Us</h1>
-          <p className="mt-4 text-white text-lg max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold ">About Us</h1>
+          <p className="mt-4 text-black-700 text-lg max-w-2xl mx-auto">
             We are building a platform that connects donors, institutes, and suppliers to ensure help reaches the needy efficiently and transparently.
           </p>
         </div>
