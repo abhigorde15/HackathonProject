@@ -1,5 +1,5 @@
-
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const Register = ()=>{
     const [formData,setFormdata] = useState({
@@ -8,25 +8,29 @@ const Register = ()=>{
       password: '',
       confirmPassword :''
     });
+    const navigate = useNavigate(); 
     const handleChange = (e) => {
       setFormdata({ ...formData, [e.target.name]: e.target.value });
     };
-    const onSumbit = async(e)=>{
-       e.preventDefault();
-       if(formData.password !== formData.confirmPassword){
-        alert("Confirm password is not Same as Password");
-        return;
-       }
-       try{
-        console.log(formData);
-        const response = await axios.post("",formData);
-        console.log("User Registered"+response.data);
-        
-
-       }catch(error){
-        alert("Error Occured..!");
-       }
-    }
+    const onSumbit = async (e) => {
+      e.preventDefault();
+      try {
+          console.log(formData);
+          const response = await axios.post("http://localhost:5000/api/auth/register", formData);
+          console.log("User Registered:", response.data);
+          
+          alert("✅ Registration Successful! Redirecting to login...");
+          
+          // Wait for 3 seconds before navigating to login page
+          setTimeout(() => {
+              navigate("/login");
+          }, 1000);
+  
+      } catch (error) {
+          alert("❌ Error Occurred..!");
+      }
+  };
+  
     
 
   return(
@@ -42,6 +46,19 @@ const Register = ()=>{
                     Create an account
                 </h1>
                 <form className="space-y-4 md:space-y-6" onSubmit={onSumbit} method="post" >
+
+
+
+                <div>
+                        <label htmlFor="Name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
+                        <input 
+                        type="text" name="name" id="name" 
+                        onChange={handleChange} 
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                        value={formData.name} />
+                    </div>
+
+
                     <div>
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                         <input 
@@ -59,7 +76,7 @@ const Register = ()=>{
                          value={formData.password}
                         />
                     </div>
-                    <div>
+                    {/* <div>
                         <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
                         <input type="confirmPassword" name="confirmPassword" 
                         id="confirmPassword" placeholder="••••••••" 
@@ -67,7 +84,7 @@ const Register = ()=>{
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" 
                         value={formData.confirmPassword}
                         />
-                    </div>
+                    </div> */}
                     <div className="flex items-start">
                         <div className="flex items-center h-5">
                           <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />

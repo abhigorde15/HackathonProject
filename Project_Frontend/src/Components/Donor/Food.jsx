@@ -30,7 +30,7 @@ const Food = () => {
   };
 
   return (
-    <section className="p-8 mt-20 max-w-5xl mx-auto">
+    <section className="p-8 mt-20 max-w-5xl mx-auto bg-gray-200">
       <div className="flex justify-center mb-8 gap-4">
         <input 
           type="text" 
@@ -49,7 +49,7 @@ const Food = () => {
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredInstitutes.map((institute, index) => (
-          <div key={index} className="border p-6 rounded-xl shadow-xl bg-white flex flex-col items-center text-center cursor-pointer transform transition duration-300 hover:scale-105" onClick={() => handleOpen(institute)}>
+          <div key={index} className=" p-6 rounded-xl shadow-xl bg-white flex flex-col items-center text-center cursor-pointer transform transition duration-300 hover:scale-105" onClick={() => handleOpen(institute)}>
             <img src={institute.image} alt={institute.name} className="w-36 h-36 object-cover rounded-full mb-4 shadow-md" />
             <h3 className="text-2xl font-bold">{institute.name}</h3>
             <p className="text-gray-500 text-lg">City: {institute.city}</p>

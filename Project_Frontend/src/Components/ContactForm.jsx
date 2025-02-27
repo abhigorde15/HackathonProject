@@ -48,7 +48,7 @@ const ContactForm = () => {
             <p className="text-center text-gray-600 dark:text-gray-300 mb-6">We'd love to hear from you!</p>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Name</label>
                     <input
                         type="text"
                         name="name"
@@ -86,7 +86,7 @@ const ContactForm = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition"
+                    className="w-full bg-blue-600 hover:bg-blue-800 text-white font-medium py-3 rounded-lg focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 transition"
                 >
                     {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
