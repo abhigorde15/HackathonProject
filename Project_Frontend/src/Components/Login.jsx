@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate(); // ✅ Hook for navigation
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,9 +18,30 @@ const Login = () => {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await axios.post("", formData); // Add your backend login endpoint here
-      console.log("User Logged In: " + response.data);
+
+      const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+
+      console.log("User Logged In:", response.data);
+
+      // ✅ Store token in localStorage for authentication
+      localStorage.setItem("token", response.data.token);
+
+      // ✅ Extract role and navigate accordingly
+      console.log(response.data);
+      const role = response.data.user.role; 
+      console.log(role);
+      if (role == "institute") {
+        navigate("/dashboard/institute");
+      } else if (role == "donor") {
+        navigate("/dashboard/donor");
+      } else if (role == "shopkeeper") {
+        navigate("/dashboard/shopkeeper");
+      } else {
+        alert("Invalid Role!"); // Handle unexpected roles
+      }
+
     } catch (error) {
+      console.error("Login Failed:", error.response?.data?.message || error.message);
       alert("Login Failed. Please check your credentials.");
     }
   };
@@ -69,7 +93,7 @@ const Login = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don't have an account?{" "}
-                <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                   Register here
                 </a>
               </p>

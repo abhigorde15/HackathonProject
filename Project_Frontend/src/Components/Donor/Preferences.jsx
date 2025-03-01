@@ -4,26 +4,28 @@ const Preferences = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-white shadow-lg rounded-2xl p-6 max-w-md mx-auto border border-gray-200">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4">Donation Preferences</h3>
-      <div className="space-y-2">
-        <button 
-          className="w-full text-left flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition p-3 rounded-lg cursor-pointer"
+    <section className="bg-blue-50 shadow-lg rounded-2xl p-6 max-w-md mx-auto border border-blue-200">
+      <h3 className="text-xl font-semibold text-blue-800 mb-4 text-center">
+        Donation Preferences
+      </h3>
+      <div className="space-y-3">
+        <button
+          className="w-full text-left flex items-center gap-2 bg-blue-100 hover:bg-blue-200 transition p-3 rounded-lg cursor-pointer shadow-sm"
           onClick={() => navigate("/institute/food")}
         >
-          <span className="text-gray-700 font-medium">Food</span>
+          <span className="text-blue-800 font-medium">🍛 Food</span>
         </button>
-        <button 
-          className="w-full text-left flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition p-3 rounded-lg cursor-pointer"
+        <button
+          className="w-full text-left flex items-center gap-2 bg-blue-100 hover:bg-blue-200 transition p-3 rounded-lg cursor-pointer shadow-sm"
           onClick={() => navigate("/institute/medical")}
         >
-          <span className="text-gray-700 font-medium">Medical Supplies</span>
+          <span className="text-blue-800 font-medium">💊 Medical Supplies</span>
         </button>
-        <button 
-          className="w-full text-left flex items-center gap-2 bg-gray-100 hover:bg-gray-200 transition p-3 rounded-lg cursor-pointer"
+        <button
+          className="w-full text-left flex items-center gap-2 bg-blue-100 hover:bg-blue-200 transition p-3 rounded-lg cursor-pointer shadow-sm"
           onClick={() => navigate("/institute/clothes")}
         >
-          <span className="text-gray-700 font-medium">Clothes</span>
+          <span className="text-blue-800 font-medium">👕 Clothes</span>
         </button>
       </div>
     </section>

@@ -9,6 +9,7 @@ import Footer from './Components/Footer';
 import DonorProfile from './Components/Donor/DonorProfile';
 import Login from './Components/Login';
 import Food from './Components/Donor/Food';
+import InstituteDashboard from './Components/Institues/InstituteDashboard';
 
 
 function App() {
@@ -16,12 +17,13 @@ function App() {
     <BrowserRouter>
      <Navbar />
       <Routes>
-     
+        
         <Route path="/" element={<Home />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
        <Route path="/dashboard/donor" element={<DonorProfile/>}/>
+       <Route path="/dashboard/institute" element={<InstituteDashboard/>}/>
        <Route path="/institute/food" element={<Food/>}/>
       </Routes>
       <Footer/>

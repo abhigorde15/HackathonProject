@@ -38,7 +38,7 @@ const DonationList = () => {
               filteredDonations.map((donation) => (
                   <div
                       key={donation.id}
-                      className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+                      className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-400 dark:border-gray-700"
                   >
                       <a href="#">
                           <img
@@ -49,14 +49,14 @@ const DonationList = () => {
                       </a>
                       <div className="p-4">
                           <a href="#">
-                              <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                              <h5 className="mb-1 text-xl font-bold tracking-tight text-gray-900">
                                   {donation.category}
                               </h5>
                           </a>
-                          <p className="mb-2 text-sm text-gray-700 dark:text-gray-400">
+                          <p className="mb-2 text-sm text-gray-900">
                               Location: {donation.location}
                           </p>
-                          <p className="mb-2 text-sm text-gray-700 dark:text-gray-400">
+                          <p className="mb-2 text-sm  text-gray-900">
                               Urgency: {donation.urgency}
                           </p>
                           <a

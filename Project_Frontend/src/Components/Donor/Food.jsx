@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, FormControlLabel, Checkbox } from "@mui/material";
 
 const Food = () => {
@@ -6,6 +6,13 @@ const Food = () => {
   const [filter, setFilter] = useState("");
   const [open, setOpen] = useState(false);
   const [selectedInstitute, setSelectedInstitute] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
+
+  // Load wishlist from localStorage on mount
+  useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
+  }, []);
 
   const institutes = [
     { name: "Annapurna Orphanage", city: "Mumbai", requirement: "10kg Rice, 5kg Dal", image: "/Orphanage1.jpg" },
@@ -29,6 +36,23 @@ const Food = () => {
     setOpen(false);
   };
 
+  // Add/Remove from Wishlist
+  const toggleWishlist = (institute) => {
+    let updatedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (updatedWishlist.some((item) => item.name === institute.name)) {
+      // Remove from wishlist
+      updatedWishlist = updatedWishlist.filter((item) => item.name !== institute.name);
+    } else {
+      // Add to wishlist
+      updatedWishlist.push({ id: Date.now(), name: `${institute.name} - ${institute.requirement}` });
+    }
+
+    // Update state and localStorage
+    setWishlist(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  };
+
   return (
     <section className="p-8 mt-20 max-w-5xl mx-auto bg-gray-200">
       <div className="flex justify-center mb-8 gap-4">
@@ -48,16 +72,30 @@ const Food = () => {
       </div>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredInstitutes.map((institute, index) => (
-          <div key={index} className=" p-6 rounded-xl shadow-xl bg-white flex flex-col items-center text-center cursor-pointer transform transition duration-300 hover:scale-105" onClick={() => handleOpen(institute)}>
-            <img src={institute.image} alt={institute.name} className="w-36 h-36 object-cover rounded-full mb-4 shadow-md" />
-            <h3 className="text-2xl font-bold">{institute.name}</h3>
-            <p className="text-gray-500 text-lg">City: {institute.city}</p>
-            <p className="text-gray-900 font-medium text-lg">Requirement: {institute.requirement}</p>
-          </div>
-        ))}
+        {filteredInstitutes.map((institute, index) => {
+          const isWishlisted = wishlist.some((item) => item.name.startsWith(institute.name));
+
+          return (
+            <div key={index} className="p-6 rounded-xl shadow-xl bg-white flex flex-col items-center text-center cursor-pointer transform transition duration-300 hover:scale-105">
+              <img src={institute.image} alt={institute.name} className="w-36 h-36 object-cover rounded-full mb-4 shadow-md" />
+              <h3 className="text-2xl font-bold">{institute.name}</h3>
+              <p className="text-gray-500 text-lg">City: {institute.city}</p>
+              <p className="text-gray-900 font-medium text-lg">Requirement: {institute.requirement}</p>
+
+              {/* Wishlist Button */}
+              <button 
+                className={`mt-3 px-4 py-2 rounded-lg text-white font-semibold transition ${
+                  isWishlisted ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+                }`}
+                onClick={() => toggleWishlist(institute)}
+              >
+                {isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+              </button>
+            </div>
+          );
+        })}
       </div>
-      
+
       {selectedInstitute && (
         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
           <DialogTitle className="bg-blue-600 text-white text-center text-2xl font-bold">Confirm Your Donation</DialogTitle>

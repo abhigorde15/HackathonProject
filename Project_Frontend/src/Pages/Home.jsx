@@ -42,7 +42,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-       <div className="min-h-screen bg-gray-200">
+       <div className="min-h-screen bg-gray-200 ">
             <h1 className="text-3xl font-bold text-center p-6 text-black">Find Donation Requests</h1>
             <DonationList />
         </div>
